@@ -1,0 +1,442 @@
+/* ==========================================================
+   Taller de ciclos en JavaScript · estilos.css
+   Tema: hoja cuadriculada de cuaderno con tinta azul.
+   Funciona con todas las páginas (index, ejemplos,
+   ejercicio1-8 y reto) sin tocar el HTML ni el JS.
+   ========================================================== */
+
+:root {
+  --papel: #f4f8fc;
+  --hoja: #ffffff;
+  --cuadricula: #dbe6f2;
+  --tinta: #14213d;
+  --tinta-suave: #4a5a78;
+  --azul: #2457e6;
+  --azul-oscuro: #1a3fb0;
+  --marcador: #ffe066;
+  --margen: #e5484d;
+  --ok: #17803d;
+  --ok-fondo: #e3f6ea;
+  --borde: #c3d1e3;
+  --radio: 6px;
+  --fuente: "Segoe UI", "Trebuchet MS", system-ui, -apple-system, Roboto, sans-serif;
+  --fuente-codigo: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 860px;
+  padding: 2rem 1.25rem 4rem;
+  font-family: var(--fuente);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--tinta);
+  background-color: var(--papel);
+  background-image:
+    linear-gradient(var(--cuadricula) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cuadricula) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-attachment: fixed;
+}
+
+/* ---------- Tipografía ---------- */
+
+h1,
+h2 {
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+h1 {
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin: 0 0 0.9rem;
+}
+
+strong {
+  font-weight: 700;
+}
+
+code {
+  font-family: var(--fuente-codigo);
+  font-size: 0.92em;
+  background: #e8eefb;
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+a {
+  color: var(--azul);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--azul-oscuro);
+}
+
+:focus-visible {
+  outline: 3px solid var(--azul);
+  outline-offset: 2px;
+}
+
+/* ---------- Encabezado ---------- */
+
+header {
+  margin-bottom: 1.75rem;
+}
+
+header a {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.25rem 0.7rem;
+  border: 1.5px solid var(--borde);
+  border-radius: 999px;
+  background: var(--hoja);
+}
+
+header a:hover {
+  border-color: var(--azul);
+  background: #eef3ff;
+}
+
+header > p {
+  margin: 0.6rem 0 0;
+  color: var(--tinta-suave);
+}
+
+/* Línea de etiquetas (ciclo, acumuladores...) como subrayado de marcador */
+#etiquetas {
+  display: inline-block;
+  font-family: var(--fuente-codigo);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--tinta);
+  padding: 0.1rem 0.5rem;
+  background: linear-gradient(transparent 40%, var(--marcador) 40%);
+}
+
+/* ---------- Secciones (hojas) ---------- */
+
+main {
+  display: grid;
+  gap: 1.5rem;
+}
+
+section {
+  background: var(--hoja);
+  border: 1.5px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1.4rem 1.5rem;
+  box-shadow: 4px 4px 0 var(--borde);
+}
+
+/* Enunciado: hoja con margen rojo como cuaderno */
+#enunciado {
+  border-left: 5px double var(--margen);
+}
+
+#enunciado ul {
+  margin: 0.5rem 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+#enunciado li {
+  position: relative;
+  padding: 0.35rem 0 0.35rem 1.7rem;
+  border-bottom: 1px dashed var(--cuadricula);
+}
+
+#enunciado li:last-child {
+  border-bottom: 0;
+}
+
+#enunciado li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.8rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid var(--azul);
+  border-radius: 2px;
+}
+
+#enunciado p:last-child {
+  margin-bottom: 0;
+}
+
+#enunciado p strong:first-child {
+  background: linear-gradient(transparent 55%, var(--marcador) 55%);
+}
+
+/* Controles */
+#controles {
+  background: #eef3ff;
+  border-color: var(--azul);
+  box-shadow: 4px 4px 0 var(--azul);
+}
+
+/* ---------- Formularios ---------- */
+
+form {
+  display: grid;
+  gap: 0.35rem;
+}
+
+/* Formularios sueltos (ejemplos.html) */
+body > form {
+  background: var(--hoja);
+  border: 1.5px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 4px 4px 0 var(--borde);
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 0.7rem;
+}
+
+label:first-child {
+  margin-top: 0;
+}
+
+input,
+textarea {
+  width: 100%;
+  font: inherit;
+  font-family: var(--fuente-codigo);
+  font-size: 0.97rem;
+  color: var(--tinta);
+  background: var(--hoja);
+  border: 1.5px solid var(--tinta-suave);
+  border-radius: var(--radio);
+  padding: 0.55rem 0.75rem;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 5rem;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #8a97ad;
+}
+
+input:focus,
+textarea:focus {
+  outline: 3px solid rgba(36, 87, 230, 0.35);
+  border-color: var(--azul);
+}
+
+button {
+  justify-self: start;
+  margin-top: 1rem;
+  font: inherit;
+  font-weight: 700;
+  color: #fff;
+  background: var(--azul);
+  border: 0;
+  border-radius: var(--radio);
+  padding: 0.65rem 1.4rem;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--tinta);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+button:hover {
+  background: var(--azul-oscuro);
+}
+
+button:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 var(--tinta);
+}
+
+/* ---------- Resultados ---------- */
+
+#resultado {
+  background: var(--tinta);
+  color: #eaf0fb;
+  border-color: var(--tinta);
+  box-shadow: 4px 4px 0 var(--azul);
+}
+
+#resultado h2 {
+  color: #fff;
+}
+
+#resultado p {
+  margin: 0;
+  padding: 0.45rem 0;
+  border-bottom: 1px dashed rgba(234, 240, 251, 0.25);
+}
+
+#resultado strong {
+  font-family: var(--fuente-codigo);
+  color: var(--marcador);
+  font-size: 1.05em;
+}
+
+/* Mensaje principal (éxito, error, estado inicial) */
+#mensaje {
+  margin-bottom: 0.5rem;
+  padding: 0.65rem 0.9rem !important;
+  border: 0 !important;
+  border-left: 4px solid var(--marcador) !important;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 0 var(--radio) var(--radio) 0;
+  font-weight: 600;
+}
+
+/* Listas generadas por JS (historial, registro, detalle...) */
+#resultado ul {
+  list-style: none;
+  margin: 0.5rem 0 0.75rem;
+  padding: 0;
+  font-family: var(--fuente-codigo);
+  font-size: 0.93rem;
+}
+
+#resultado li {
+  padding: 0.35rem 0.75rem;
+  margin-bottom: 0.3rem;
+  background: rgba(255, 255, 255, 0.07);
+  border-left: 3px solid var(--azul);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Listas generadas por JS en ejemplos.html (fuera de #resultado) */
+body > ul {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  font-family: var(--fuente-codigo);
+  font-size: 0.93rem;
+}
+
+body > ul li {
+  padding: 0.35rem 0.75rem;
+  margin-bottom: 0.3rem;
+  background: var(--hoja);
+  border: 1px solid var(--borde);
+  border-left: 3px solid var(--azul);
+  border-radius: 0 4px 4px 0;
+}
+
+body > p {
+  padding: 0.1rem 0.2rem;
+  font-weight: 600;
+}
+
+/* ---------- Página de ejemplos ---------- */
+
+body > h1 {
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- Menú (index.html) ---------- */
+
+#seccionEjemplos,
+#seccionTaller,
+#seccionReto {
+  position: relative;
+}
+
+#seccionEjemplos {
+  border-left: 5px solid var(--azul);
+}
+
+#seccionTaller {
+  border-left: 5px solid var(--marcador);
+}
+
+#seccionReto {
+  border-left: 5px solid var(--margen);
+}
+
+#seccionTaller ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+#seccionTaller li a {
+  display: block;
+  padding: 0.7rem 1rem;
+  border: 1.5px solid var(--borde);
+  border-radius: var(--radio);
+  background: var(--papel);
+  color: var(--tinta);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+}
+
+#seccionTaller li a:hover {
+  border-color: var(--azul);
+  background: #eef3ff;
+  transform: translateX(4px);
+}
+
+#seccionEjemplos p,
+#seccionReto p {
+  margin: 0;
+}
+
+/* ---------- Móvil ---------- */
+
+@media (max-width: 560px) {
+  body {
+    padding: 1.25rem 0.9rem 3rem;
+    font-size: 1rem;
+  }
+
+  section,
+  body > form {
+    padding: 1.1rem 1rem;
+  }
+
+  button {
+    width: 100%;
+    justify-self: stretch;
+  }
+}
+
+/* ---------- Movimiento reducido ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
